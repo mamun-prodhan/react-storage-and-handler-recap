@@ -1,18 +1,20 @@
 import React from 'react';
+import './Employee.css';
+import { addToDb } from '../../Utilities/fakeDB';
 
 const Employee = ({employee}) => {
     const {_id, name, age} = employee;
 
     const employeeDetails = (_id)=>{
-        console.log('clicked Item is: ', _id, 'Name is: ', name, 'age is: ', age);
+        addToDb(_id);
     }
 
     return (
-        <div>
+        <div className='employee'>
             <h2>Employee Name: {name}</h2>
             <p>Employee Age: {age}</p>
             <p><small>It has Id: {_id}</small></p>
-            <button onClick={()=>employeeDetails(_id, name, age)}>Employee Details</button>
+            <button onClick={()=>employeeDetails(_id)}>Employee Details</button>
         </div>
     );
 };
